@@ -873,5 +873,35 @@ if (!function_exists('get_address')) {
         ];
     }
 }
+if (!function_exists('timestampToString')) {
+    /**时间戳转换为指定格式的字符串
+     * @param $address
+     * @return array
+     */
+function timestampToString($timestamp) {
+  $now = time();
+  $diff = $now - $timestamp;
+  $one_minute = 60;
+  $one_hour = 60 * $one_minute;
+  $one_day = 24 * $one_hour;
+  $one_month = 30 * $one_day;
+  $one_year = 365 * $one_day;
 
+  if ($diff < $one_minute) {
+    return '刚刚';
+  } elseif ($diff < 15 * $one_minute) {
+    return '15分钟前';
+  } elseif ($diff < 2 * $one_day) {
+    return date('H:i', $timestamp);
+  } elseif ($diff < 3 * $one_day) {
+    return '昨天';
+  } elseif ($diff < 12 * $one_month) {
+    return date('n月j日', $timestamp);
+  } elseif ($diff < 2 * $one_year) {
+    return date('n月j日 Y年', $timestamp);
+  } else {
+    return date('Y年n月j日', $timestamp);
+  }
+}
+}
 

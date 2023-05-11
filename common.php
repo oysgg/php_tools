@@ -11,7 +11,7 @@ if (!function_exists('__')) {
     /**
      * 获取语言变量值
      * @param string $name 语言变量名
-     * @param array  $vars 动态变量值
+     * @param array $vars 动态变量值
      * @param string $lang 语言
      * @return mixed
      */
@@ -33,9 +33,9 @@ if (!function_exists('format_bytes')) {
 
     /**
      * 将字节转换为可读文本
-     * @param int    $size      大小
+     * @param int $size 大小
      * @param string $delimiter 分隔符
-     * @param int    $precision 小数位数
+     * @param int $precision 小数位数
      * @return string
      */
     function format_bytes($size, $delimiter = '', $precision = 2)
@@ -52,7 +52,7 @@ if (!function_exists('datetime')) {
 
     /**
      * 将时间戳转换为日期时间
-     * @param int    $time   时间戳
+     * @param int $time 时间戳
      * @param string $format 日期时间格式
      * @return string
      */
@@ -67,7 +67,7 @@ if (!function_exists('human_date')) {
 
     /**
      * 获取语义化时间
-     * @param int $time  时间
+     * @param int $time 时间
      * @param int $local 本地时间
      * @return string
      */
@@ -81,7 +81,7 @@ if (!function_exists('cdnurl')) {
 
     /**
      * 获取上传资源的CDN的地址
-     * @param string  $url    资源相对地址
+     * @param string $url 资源相对地址
      * @param boolean $domain 是否显示域名 或者直接传入域名
      * @return string
      */
@@ -132,8 +132,8 @@ if (!function_exists('rmdirs')) {
 
     /**
      * 删除文件夹
-     * @param string $dirname  目录
-     * @param bool   $withself 是否删除自身
+     * @param string $dirname 目录
+     * @param bool $withself 是否删除自身
      * @return boolean
      */
     function rmdirs($dirname, $withself = true)
@@ -162,7 +162,7 @@ if (!function_exists('copydirs')) {
     /**
      * 复制文件夹
      * @param string $source 源文件夹
-     * @param string $dest   目标文件夹
+     * @param string $dest 目标文件夹
      */
     function copydirs($source, $dest)
     {
@@ -198,7 +198,7 @@ if (!function_exists('addtion')) {
 
     /**
      * 附加关联字段数据
-     * @param array $items  数据列表
+     * @param array $items 数据列表
      * @param mixed $fields 渲染的来源字段
      * @return array
      */
@@ -271,7 +271,7 @@ if (!function_exists('var_export_short')) {
 
     /**
      * 使用短标签打印或返回数组结构
-     * @param mixed   $data
+     * @param mixed $data
      * @param boolean $return 是否返回数据
      * @return string
      */
@@ -487,7 +487,7 @@ if (!function_exists('build_suffix_image')) {
     /**
      * 生成文件后缀图片
      * @param string $suffix 后缀
-     * @param null   $background
+     * @param null $background
      * @return string
      */
     function build_suffix_image($suffix, $background = null)
@@ -520,21 +520,20 @@ if (!function_exists('getFilesAttr')) {
      */
     function getFilesAttr($value)
     {
-        if($value!=''){
-            if(!is_array($value)){
-                $images =array_filter(explode(',',$value));
-            }else{
-                $images =$value;
+        if ($value != '') {
+            if (!is_array($value)) {
+                $images = array_filter(explode(',', $value));
+            } else {
+                $images = $value;
             }
 
-            foreach ($images as $k=>$v)
-            {
-                $images[$k] =cdnurl($v,true);
+            foreach ($images as $k => $v) {
+                $images[$k] = cdnurl($v, true);
 
             }
             return $images;
         }
-        return  $value;
+        return $value;
 
     }
 }
@@ -714,14 +713,14 @@ if (!function_exists('imageMosaics')) {
 if (!function_exists('human_date_cn')) {
     /**
      * 获取语义化时间，返回中文
-     * @param int $time  时间
+     * @param int $time 时间
      * @param int $local 本地时间
      * @return string
      */
     function human_date_cn($time, $local = null)
     {
-        if(empty($local)){
-            $local=time();
+        if (empty($local)) {
+            $local = time();
         }
         if ($local - $time < 60 * 3) {
             $putTime = '刚刚';
@@ -744,21 +743,21 @@ if (!function_exists('human_date_cn')) {
 if (!function_exists('getDistance')) {
     /**
      * 根据经纬度算出距离
-     * @param int $lat1  纬度1
-     * @param int $lng1  经度1
-     * @param int $lat2  纬度2
-     * @param int $lng2  经度2
+     * @param int $lat1 纬度1
+     * @param int $lng1 经度1
+     * @param int $lat2 纬度2
+     * @param int $lng2 经度2
      * @return string
      */
     function getDistance($lat1, $lng1, $lat2, $lng2)
     {
         $earthRadius = 6378.137; //approximate radius of earth in meters
 
-        $lat1 = ($lat1 * pi() ) / 180;
-        $lng1 = ($lng1 * pi() ) / 180;
+        $lat1 = ($lat1 * pi()) / 180;
+        $lng1 = ($lng1 * pi()) / 180;
 
-        $lat2 = ($lat2 * pi() ) / 180;
-        $lng2 = ($lng2 * pi() ) / 180;
+        $lat2 = ($lat2 * pi()) / 180;
+        $lng2 = ($lng2 * pi()) / 180;
 
         $calcLongitude = $lng2 - $lng1;
         $calcLatitude = $lat2 - $lat1;
@@ -774,8 +773,7 @@ if (!function_exists('getDistance')) {
 if (!function_exists('num_to_rmb')) {
     /**
      * 数字转人民币大写
-     * @param int $num  金额数字
-
+     * @param int $num 金额数字
      * @return string
      */
     function num_to_rmb($num)
@@ -794,7 +792,7 @@ if (!function_exists('num_to_rmb')) {
         while (1) {
             if ($i == 0) {
                 //获取最后一位数字
-                $n = substr($num, strlen($num)-1, 1);
+                $n = substr($num, strlen($num) - 1, 1);
             } else {
                 $n = $num % 10;
             }
@@ -825,19 +823,19 @@ if (!function_exists('num_to_rmb')) {
                 $left = substr($c, 0, $j);
                 $right = substr($c, $j + 3);
                 $c = $left . $right;
-                $j = $j-3;
-                $slen = $slen-3;
+                $j = $j - 3;
+                $slen = $slen - 3;
             }
             $j = $j + 3;
         }
         //这个是为了去掉类似23.0中最后一个“零”字
-        if (substr($c, strlen($c)-3, 3) == '零') {
-            $c = substr($c, 0, strlen($c)-3);
+        if (substr($c, strlen($c) - 3, 3) == '零') {
+            $c = substr($c, 0, strlen($c) - 3);
         }
         //将处理的汉字加上“整”
         if (empty($c)) {
             return "零元整";
-        }else{
+        } else {
             return $c . "整";
         }
     }
@@ -853,7 +851,7 @@ if (!function_exists('get_address')) {
         preg_match('/(.*?(省|自治区|北京市|天津市|上海市|重庆市|澳门特别行政区|香港特别行政区))/', $address, $matches);
         if (count($matches) > 1) {
             $province = $matches[count($matches) - 2];
-            $address = preg_replace('/(.*?(省|自治区|北京市|天津市|上海市|重庆市|澳门特别行政区|香港特别行政区))/','', $address, 1);
+            $address = preg_replace('/(.*?(省|自治区|北京市|天津市|上海市|重庆市|澳门特别行政区|香港特别行政区))/', '', $address, 1);
         }
         preg_match('/(.*?(市|自治州|地区|区划|县))/', $address, $matches);
         if (count($matches) > 1) {
@@ -878,30 +876,55 @@ if (!function_exists('timestampToString')) {
      * @param $address
      * @return array
      */
-function timestampToString($timestamp) {
-  $now = time();
-  $diff = $now - $timestamp;
-  $one_minute = 60;
-  $one_hour = 60 * $one_minute;
-  $one_day = 24 * $one_hour;
-  $one_month = 30 * $one_day;
-  $one_year = 365 * $one_day;
+    function timestampToString($timestamp)
+    {
+        $now = time();
+        $diff = $now - $timestamp;
+        $one_minute = 60;
+        $one_hour = 60 * $one_minute;
+        $one_day = 24 * $one_hour;
+        $one_month = 30 * $one_day;
+        $one_year = 365 * $one_day;
 
-  if ($diff < $one_minute) {
-    return '刚刚';
-  } elseif ($diff < 15 * $one_minute) {
-    return '15分钟前';
-  } elseif ($diff < 2 * $one_day) {
-    return date('H:i', $timestamp);
-  } elseif ($diff < 3 * $one_day) {
-    return '昨天';
-  } elseif ($diff < 12 * $one_month) {
-    return date('n月j日', $timestamp);
-  } elseif ($diff < 2 * $one_year) {
-    return date('n月j日 Y年', $timestamp);
-  } else {
-    return date('Y年n月j日', $timestamp);
-  }
-}
-}
+        if ($diff < $one_minute) {
+            return '刚刚';
+        } elseif ($diff < 15 * $one_minute) {
+            return '15分钟前';
+        } elseif ($diff < 2 * $one_day) {
+            return date('H:i', $timestamp);
+        } elseif ($diff < 3 * $one_day) {
+            return '昨天';
+        } elseif ($diff < 12 * $one_month) {
+            return date('n月j日', $timestamp);
+        } elseif ($diff < 2 * $one_year) {
+            return date('n月j日 Y年', $timestamp);
+        } else {
+            return date('Y年n月j日', $timestamp);
+        }
+    }
 
+    if (!function_exists('timestampToString')) {
+        /**
+         * Notes:计算两个日期之间的天数
+         * User: oys
+         * Date: 2023/5/11
+         * Time: 12:02
+         * @param $date1
+         * @param $date2
+         * @return false|float
+         */
+        function timestampToString($date1, $date2)
+        {
+            // 将日期字符串转换为 Unix 时间戳
+            $timestamp1 = strtotime($date1);
+            $timestamp2 = strtotime($date2);
+            // 计算两个时间戳之间的秒数差
+            $seconds_diff = abs($timestamp2 - $timestamp1);
+            // 计算天数差
+            $days_diff = floor($seconds_diff / (60 * 60 * 24));
+            // 返回天数差
+            return $days_diff;
+        }
+    }
+
+}
